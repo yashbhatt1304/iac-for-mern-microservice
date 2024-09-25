@@ -3,14 +3,24 @@ output "vpc_id" {
   value = aws_vpc.my_vpc.id
 }
 
-output "public_subnet_id" {
-  description = "This is public subnet id"
-  value = aws_subnet.public_subnet.id
+output "public_subnet_id_AZ1" {
+  description = "This is public subnet id for AZ1"
+  value = aws_subnet.public_subnet-az1.id
 }
 
-output "private_subnet_id" {
-  description = "This is private subnet id"
-  value = aws_subnet.private_subnet.id
+output "public_subnet_id_AZ2" {
+  description = "This is public subnet id for AZ2"
+  value = aws_subnet.public_subnet-az2.id
+}
+
+output "private_subnet_id_AZ1" {
+  description = "This is private subnet id for AZ1"
+  value = aws_subnet.private_subnet-az1.id
+}
+
+output "private_subnet_id_AZ2" {
+  description = "This is private subnet id for AZ2"
+  value = aws_subnet.private_subnet-az2.id
 }
 
 output "internet_gateway" {

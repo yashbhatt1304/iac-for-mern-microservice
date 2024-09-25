@@ -21,25 +21,49 @@ resource "aws_vpc" "my_vpc" {
 }
 
 #######  Public Subnet in Availability Zone 1  ########
-resource "aws_subnet" "public_subnet" {
+resource "aws_subnet" "public_subnet-az1" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "ap-northeast-2a"  # Choose your preferred AZ
 
   tags = {
-    Name = "PublicSubnet"
+    Name = "PublicSubnet-1"
+    Application = var.mern_application_tag 
+  }
+}
+
+#######  Public Subnet in Availability Zone 2  ########
+resource "aws_subnet" "public_subnet-az2" {
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "ap-northeast-2b"  # Choose your preferred AZ
+
+  tags = {
+    Name = "PublicSubnet-2"
     Application = var.mern_application_tag 
   }
 }
 
 #######  Private Subnet in Availability Zone 1  ########
-resource "aws_subnet" "private_subnet" {
+resource "aws_subnet" "private_subnet-az1" {
   vpc_id            = aws_vpc.my_vpc.id
-  cidr_block        = "10.0.2.0/24"
+  cidr_block        = "10.0.3.0/24"
   availability_zone = "ap-northeast-2a"
 
   tags = {
-    Name = "PrivateSubnet"
+    Name = "PrivateSubnet-1"
+    Application = var.mern_application_tag 
+  }
+}
+
+#######  Private Subnet in Availability Zone 2  ########
+resource "aws_subnet" "private_subnet-az2" {
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.4.0/24"
+  availability_zone = "ap-northeast-2b"
+
+  tags = {
+    Name = "PrivateSubnet-2"
     Application = var.mern_application_tag 
   }
 }
