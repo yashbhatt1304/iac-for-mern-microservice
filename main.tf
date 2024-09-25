@@ -21,7 +21,7 @@ resource "aws_vpc" "my_vpc" {
 }
 
 #######  Public Subnet in Availability Zone 1  ########
-resource "aws_subnet" "public_subnet-az1" {
+resource "aws_subnet" "public_subnet_az1" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "ap-northeast-2a"  # Choose your preferred AZ
@@ -33,7 +33,7 @@ resource "aws_subnet" "public_subnet-az1" {
 }
 
 #######  Public Subnet in Availability Zone 2  ########
-resource "aws_subnet" "public_subnet-az2" {
+resource "aws_subnet" "public_subnet_az2" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "10.0.2.0/24"
   availability_zone = "ap-northeast-2b"  # Choose your preferred AZ
@@ -45,7 +45,7 @@ resource "aws_subnet" "public_subnet-az2" {
 }
 
 #######  Private Subnet in Availability Zone 1  ########
-resource "aws_subnet" "private_subnet-az1" {
+resource "aws_subnet" "private_subnet_az1" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "10.0.3.0/24"
   availability_zone = "ap-northeast-2a"
@@ -57,7 +57,7 @@ resource "aws_subnet" "private_subnet-az1" {
 }
 
 #######  Private Subnet in Availability Zone 2  ########
-resource "aws_subnet" "private_subnet-az2" {
+resource "aws_subnet" "private_subnet_az2" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "10.0.4.0/24"
   availability_zone = "ap-northeast-2b"
@@ -93,13 +93,19 @@ resource "aws_route_table" "public_route_table" {
   }
 }
 
-#########  Associate Public Subnet with the Route Table  #########
-resource "aws_route_table_association" "public_route_table_association" {
-  subnet_id      = aws_subnet.public_subnet.id
+#########  Associate Public Subnet AZ1 with the Route Table  #########
+resource "aws_route_table_association" "public_route_table_association_az1" {
+  subnet_id      = aws_subnet.public_subnet_az1.id
   route_table_id = aws_route_table.public_route_table.id
 }
 
-# Security Group for Public Instances
+#########  Associate Public Subnet AZ2 with the Route Table  #########
+resource "aws_route_table_association" "public_route_table_association_az2" {
+  subnet_id      = aws_subnet.public_subnet_az2.id
+  route_table_id = aws_route_table.public_route_table.id
+}
+
+#######  Security Group for Public Instances  ########S
 resource "aws_security_group" "public_sg" {
   vpc_id = aws_vpc.my_vpc.id
 

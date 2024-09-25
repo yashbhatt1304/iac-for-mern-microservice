@@ -5,32 +5,27 @@ output "vpc_id" {
 
 output "public_subnet_id_AZ1" {
   description = "This is public subnet id for AZ1"
-  value = aws_subnet.public_subnet-az1.id
+  value = aws_subnet.public_subnet_az1.id
 }
 
 output "public_subnet_id_AZ2" {
   description = "This is public subnet id for AZ2"
-  value = aws_subnet.public_subnet-az2.id
+  value = aws_subnet.public_subnet_az2.id
 }
 
 output "private_subnet_id_AZ1" {
   description = "This is private subnet id for AZ1"
-  value = aws_subnet.private_subnet-az1.id
+  value = aws_subnet.private_subnet_az1.id
 }
 
 output "private_subnet_id_AZ2" {
   description = "This is private subnet id for AZ2"
-  value = aws_subnet.private_subnet-az2.id
+  value = aws_subnet.private_subnet_az2.id
 }
 
 output "internet_gateway" {
   description = "This is internet gateway"
   value = aws_internet_gateway.my_igw.id
-}
-
-output "route_table_id" {
-  description = "This is route table id"
-  value = aws_route_table.public_route_table.id
 }
 
 output "route_table_id" {
