@@ -12,3 +12,13 @@ output "private_subnet_id" {
   description = "This is private subnet id"
   value = aws_subnet.private_subnet.id
 }
+
+output "internet_gateway" {
+  description = "This is internet gateway"
+  value = aws_internet_gateway.my_igw.id
+}
+
+output "route_table_id" {
+  description = "This is route table id"
+  value = aws_route_table.public_route_table.id
+}

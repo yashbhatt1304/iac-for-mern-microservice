@@ -44,3 +44,13 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
+#######  Internet Gateway for Public Subnet  ########
+resource "aws_internet_gateway" "my_igw" {
+  vpc_id = aws_vpc.my_vpc.id
+
+  tags = {
+    Name = "MyIGW"
+    Application = var.mern_application_tag
+  }
+}
+
